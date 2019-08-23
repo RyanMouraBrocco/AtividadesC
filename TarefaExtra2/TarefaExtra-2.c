@@ -19,5 +19,7 @@ void main()
 	}
 	
 	printf("\n%f", s); //printa em tipo 'float' a soma;
+	
+	// teste de branch do git 
 }
 
