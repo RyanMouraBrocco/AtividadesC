@@ -58,9 +58,9 @@ int ValidarVizinhosVivos(tipo_Individuo individuo, tipo_Individuo matriz[100][10
 	return qtd;
 }
 
-boolean ValidarVida(tipo_Individuo individuio){
-	if(individuio.vivo == TRUE){
-		switch(individuio.qtdVizinhos){
+boolean ValidarVida(tipo_Individuo individuo){
+	if(individuo.vivo == TRUE){
+		switch(individuo.qtdVizinhos){
 			case 0:
 				return FALSE;
 				break;
@@ -78,7 +78,7 @@ boolean ValidarVida(tipo_Individuo individuio){
 				break;
 		}
 	}else{
-		if(individuio.qtdVizinhos == 3)
+		if(individuo.qtdVizinhos == 3)
 			return TRUE;
 		else
 			return FALSE;

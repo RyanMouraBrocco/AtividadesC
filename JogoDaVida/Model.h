@@ -24,7 +24,7 @@ typedef struct Individuo {
 tipo_Individuo EncontrarVizinhos(tipo_Individuo matriz[100][100], int tamMatriz, tipo_Individuo individuo);
 int ValidarVizinhosVivos(tipo_Individuo individuo, tipo_Individuo matriz[100][100]);
 void LocalizarPosicoes(int max, int posicaoInicial, int posicoes[]);
-boolean ValidarVida(tipo_Individuo individuio);
+boolean ValidarVida(tipo_Individuo individuo);
 
 
 #endif 
