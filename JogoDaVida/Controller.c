@@ -33,7 +33,7 @@ void ProximaGeracao(){
 
 void TrocarMatrizes(){
 	for(int i = 0;i<tamanhoLista; i++){
-		for(int j-0;i<tamanhoLista;j++){
+		for(int j=0;i<tamanhoLista;j++){
 			Matriz[i][j] = MatrizPG[i][j];
 		}
 	}
