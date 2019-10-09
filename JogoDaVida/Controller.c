@@ -1,7 +1,7 @@
 #include "Model.h"
 
-tipo_Contato Matriz[100][100];
-tipo_Contato MatrizPG[100][100];
+tipo_Individuo Matriz[100][100];
+tipo_Individuo MatrizPG[100][100];
 
 int tamanhoLista;
 int quantidadeGen = 0;
