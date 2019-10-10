@@ -3,6 +3,8 @@
 
 
 
+void ProximaGeracao();
+void IniciandoConfig();
 
 
 #endif 
