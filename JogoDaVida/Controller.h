@@ -5,6 +5,6 @@
 
 void ProximaGeracao();
 void IniciandoConfig();
-
+void ConfigurarPrimeiraGeracao();
 
 #endif 

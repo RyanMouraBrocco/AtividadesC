@@ -39,3 +39,20 @@ void TrocarMatrizes(){
 	}
 }
 
+void ConfigurarPrimeiraGeracao(){
+	LimparMundo();
+	int coordenadas[2];
+	boolean parar = FALSE;
+	int qtd = 0;
+	while(parar==FALSE && qtd < (tamanhoLista * tamanhoLista){
+		EntradaCoordenadas(coordenadas);
+		if(Matriz[coordenadas[1]][coordenadas[0]].vivo == FALSE){
+			Matriz[coordenadas[1]][coordenadas[0]].vivo = TRUE;
+			parar = EntradaBooleano("Deseja continuar ? (s ou n)","s","n");
+			qtd+=1;
+		}else{
+			EscreverMensagem("Valor já inserido !!!");
+		}
+
+	}
+}
