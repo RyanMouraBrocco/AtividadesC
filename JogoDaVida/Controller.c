@@ -39,3 +39,15 @@ void TrocarMatrizes(){
 	}
 }
 
+void IniciarSimulacao(){
+	EscreverMensagem("Simulação iniciada:");
+	EscreverMensagem("-----------------------------------------------");
+	EscreverMensagem("1ª Geração:");
+	ExibirGeracao(MatrizPG,tamanhoLista);
+	for(int i = 2; i <= quantidadeGen;i++){
+		EscreverMensagem("-----------------------------------------------");
+		EscreverMensagemComInteiro("%dª Geração:",i);
+		ProximaGeracao();
+	}
+	EscreverMensagem("Fim da Simulação");
+}
