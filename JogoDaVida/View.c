@@ -25,4 +25,8 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 			printf("\t%d ", matriz[i][j].vivo);
 		}printf("\n");
 	}		
+void EscreverMensagem(char valor[]){
+	printf("%s ", valor);
+}
+
 }
