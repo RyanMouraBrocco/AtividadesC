@@ -44,7 +44,7 @@ void ConfigurarPrimeiraGeracao(){
 	int coordenadas[2];
 	boolean parar = FALSE;
 	int qtd = 0;
-	while(parar==FALSE && qtd < (tamanhoLista * tamanhoLista){
+	while(parar==FALSE && qtd < (tamanhoLista * tamanhoLista)){
 		EntradaCoordenadas(coordenadas);
 		if(Matriz[coordenadas[1]][coordenadas[0]].vivo == FALSE){
 			Matriz[coordenadas[1]][coordenadas[0]].vivo = TRUE;
