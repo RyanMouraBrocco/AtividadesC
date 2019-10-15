@@ -5,6 +5,8 @@
 
 void ProximaGeracao();
 void IniciandoConfig();
+void TrocarMatrizes();
+void LimparMundo();
 
 
 #endif 

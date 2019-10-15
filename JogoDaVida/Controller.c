@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "View.h"
 
 tipo_Individuo Matriz[100][100];
 tipo_Individuo MatrizPG[100][100];
@@ -24,6 +25,14 @@ void LimparMundo(){
 	}
 }
 
+void TrocarMatrizes(){
+	for(int i = 0;i<tamanhoLista; i++){
+		for(int j=0;i<tamanhoLista;j++){
+			Matriz[i][j] = MatrizPG[i][j];
+		}
+	}
+}
+
 void ProximaGeracao(){
 	for(int i = 0;i<tamanhoLista;i++){
 		for(int j = 0;j<tamanhoLista;j++){
@@ -36,11 +45,5 @@ void ProximaGeracao(){
 	TrocarMatrizes();
 }
 
-void TrocarMatrizes(){
-	for(int i = 0;i<tamanhoLista; i++){
-		for(int j=0;i<tamanhoLista;j++){
-			Matriz[i][j] = MatrizPG[i][j];
-		}
-	}
-}
+
 
