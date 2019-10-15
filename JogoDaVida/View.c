@@ -29,9 +29,9 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 
 void EntradaCoordenadas(int valores[]){
 	int x,y;
-	printf("Insira uma coordenada para x(coluna): ");
+	printf("Insira uma coordenada para x(coluna): \n");
 	scanf("%d", &x);	
-	printf("Insira uma coordenada para y(linha): "); 		
+	printf("Insira uma coordenada para y(linha): \n"); 		
 	scanf("%d", &y);
 	x = valores[0];
 	y = valores [1];
@@ -49,6 +49,6 @@ bool EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	switch(resposta){
 		case valorPositivo : return TRUE;
 		case valorNegativo : return FALSE;
-		default : printf("%s\ n", valor); scanf("%s", &resposta);
+		default : printf("%s \n", valor); scanf("%s", &resposta);
 	}
 }
