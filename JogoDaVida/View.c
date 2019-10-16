@@ -30,27 +30,34 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 	}
 }
 
-void EntradaCoordenadas(int valores[]){
-	int x,y;
-	printf("Insira uma coordenada para x(coluna): \n");
-	scanf("%d", &x);	
-	printf("Insira uma coordenada para y(linha): \n"); 		
-	scanf("%d", &y);
-	valores[0] = x;
-	valores[1] = y;
-	
+void EntradaCoordenadas(int valores[], int tamanho){
+	int x = 0 ,y = 0;
+	boolean parar = FALSE;
+	while(parar == FALSE){
+		printf("Insira uma coordenada para x(coluna): \n");
+		scanf("%d", &x);	
+		printf("Insira uma coordenada para y(linha): \n"); 		
+		scanf("%d", &y);
+		if((x>0 && x <= tamanho) && (y>0 && y <= tamanho)){
+			parar = TRUE;
+		}else{
+			printf("Valor fora das dimensões do mundo\n");
+		}
+	}
+	valores[0] = x - 1;
+	valores[1] = y - 1;
 }
 
 boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	char resposta;
 	while (resposta != valorPositivo && resposta != valorNegativo){
-	printf("%s \n", valor);
-	resposta = getchar();
-	flush_in();
-	if (resposta == valorPositivo){
-		return TRUE;
-	}else if (resposta == valorNegativo){
-		return FALSE;
+		printf("%s \n", valor);
+		resposta = getchar();
+		flush_in();
+		if (resposta == valorPositivo){
+			return TRUE;
+		}else if (resposta == valorNegativo){
+			return FALSE;
 		}
 	}
 }

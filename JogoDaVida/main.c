@@ -6,5 +6,6 @@
 
 void main() {
 	IniciandoConfig();
-	ProximaGeracao();
+	ConfigurarPrimeiraGeracao();
+	Mostrar();
 }
