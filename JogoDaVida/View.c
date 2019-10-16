@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "Model.h"
 #include "View.h"
 
 void flush_in(){
@@ -25,6 +26,7 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 			printf("\t%d ", matriz[i][j].vivo);
 		}printf("\n");
 	}		
+}
 
 
 void EntradaCoordenadas(int valores[]){
@@ -33,22 +35,28 @@ void EntradaCoordenadas(int valores[]){
 	scanf("%d", &x);	
 	printf("Insira uma coordenada para y(linha): \n"); 		
 	scanf("%d", &y);
-	x = valores[0];
-	y = valores [1];
+	valores[0] = x;
+	valores[1] = y;
 	
 }
 
 
 
 
-bool EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
+boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	char resposta;
+	while (resposta != valorPositivo && resposta != valorNegativo){
 	printf("%s \n", valor);
-	scanf("%s", &resposta);
-	
-	switch(resposta){
-		case valorPositivo : return TRUE;
-		case valorNegativo : return FALSE;
-		default : printf("%s \n", valor); scanf("%s", &resposta);
+	resposta = getchar();
+	flush_in();
+	if (resposta == valorPositivo){
+		return TRUE;
+	}else if (resposta == valorNegativo){
+		return FALSE;
+		}
 	}
 }
+
+
+
+
