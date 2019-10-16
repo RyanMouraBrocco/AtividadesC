@@ -19,15 +19,16 @@ int EntradaInteiro(char valor[]){
 void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 	for (int a = 0; a<tamanho; a++){
 		printf("\t%d", a + 1);
-	}printf("\n");
+	}
+	printf("\n");
 	for(int i = 0; i<tamanho; i++){
 		printf("%d ", i + 1);
 		for(int j = 0; j<tamanho; j++){
 			printf("\t%d ", matriz[i][j].vivo);
-		}printf("\n");
-	}		
+		}
+		printf("\n");
+	}
 }
-
 
 void EntradaCoordenadas(int valores[]){
 	int x,y;
@@ -39,9 +40,6 @@ void EntradaCoordenadas(int valores[]){
 	valores[1] = y;
 	
 }
-
-
-
 
 boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	char resposta;
@@ -57,6 +55,6 @@ boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	}
 }
 
-
-
-
+void EscreverMensagem(char valor[]){
+	printf("%s \n", valor);
+}
