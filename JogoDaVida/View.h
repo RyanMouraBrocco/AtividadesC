@@ -6,5 +6,7 @@
 void flush_in();
 int EntradaInteiro(char valor[]);
 void ExibirGeracao(tipo_Individuo matriz[100][100],int tamanho);
+void EscreverMensagemComInteiro(char valorTexto[], int valorInteiro);
+
 
 #endif 

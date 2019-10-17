@@ -26,3 +26,7 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 		}printf("\n");
 	}		
 }
+
+void EscreverMensagemComInteiro(char valorTexto[], int valorInteiro){
+	printf(valorTexto, valorInteiro);
+}
