@@ -52,8 +52,8 @@ boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	char resposta;
 	while (resposta != valorPositivo && resposta != valorNegativo){
 		printf("%s \n", valor);
-		resposta = getchar();
 		flush_in();
+		resposta = getchar();
 		if (resposta == valorPositivo){
 			return TRUE;
 		}else if (resposta == valorNegativo){
