@@ -46,4 +46,25 @@ void ProximaGeracao(){
 }
 
 
+void Mostrar(){
+		ExibirGeracao(Matriz,tamanhoLista);
+}
 
+
+void ConfigurarPrimeiraGeracao(){
+	LimparMundo();
+	int coordenadas[2];
+	boolean continuar = TRUE;
+	int qtd = 0;
+	while(continuar==TRUE && qtd < (tamanhoLista * tamanhoLista)){
+		EntradaCoordenadas(coordenadas, tamanhoLista);
+		if(Matriz[coordenadas[1]][coordenadas[0]].vivo == FALSE){
+			Matriz[coordenadas[1]][coordenadas[0]].vivo = TRUE;
+			continuar = EntradaBooleano("Deseja continuar ? (s ou n)",'s','n');
+			qtd+=1;
+		}else{
+			EscreverMensagem("Valor já inserido !!!");
+		}
+
+	}
+}
