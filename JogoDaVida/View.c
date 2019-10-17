@@ -17,14 +17,24 @@ int EntradaInteiro(char valor[]){
 }
 
 void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
+	printf("    ");
 	for (int a = 0; a<tamanho; a++){
-		printf("\t%d", a + 1);
+		if(a<9)
+			printf("  %d", a + 1);
+		else
+			printf(" %d", a + 1);
 	}
 	printf("\n");
+	
 	for(int i = 0; i<tamanho; i++){
-		printf("%d ", i + 1);
+		if(i<9)
+			printf("%d   ", i + 1);
+		else if(i<99)
+			printf("%d  ", i + 1);
+		else
+			printf("%d ", i + 1);			
 		for(int j = 0; j<tamanho; j++){
-			printf("\t%d ", matriz[i][j].vivo);
+			printf("  %d", matriz[i][j].vivo);
 		}
 		printf("\n");
 	}
