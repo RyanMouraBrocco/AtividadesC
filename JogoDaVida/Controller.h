@@ -8,5 +8,6 @@ void TrocarMatrizes();
 void LimparMundo();
 void Mostrar();
 void IniciandoConfig();
+void IniciarSimulacao();
 
 #endif 

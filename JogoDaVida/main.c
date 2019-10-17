@@ -7,5 +7,5 @@
 void main() {
 	IniciandoConfig();
 	ConfigurarPrimeiraGeracao();
-	Mostrar();
+	IniciarSimulacao();
 }

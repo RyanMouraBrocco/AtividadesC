@@ -51,7 +51,7 @@ void EntradaCoordenadas(int valores[], int tamanho){
 		if((x>0 && x <= tamanho) && (y>0 && y <= tamanho)){
 			parar = TRUE;
 		}else{
-			printf("Valor fora das dimensões do mundo\n");
+			printf("Valor fora das dimensoes do mundo\n");
 		}
 	}
 	valores[0] = x - 1;
@@ -78,4 +78,5 @@ void EscreverMensagem(char valor[]){
 
 void EscreverMensagemComInteiro(char valorTexto[], int valorInteiro){
 	printf(valorTexto, valorInteiro);
+	printf("\n");
 }

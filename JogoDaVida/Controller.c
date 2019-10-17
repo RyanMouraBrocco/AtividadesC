@@ -8,26 +8,29 @@ int tamanhoLista = 0;
 int quantidadeGen = 0;
 
 void IniciandoConfig(){
-	while(tamanhoLista<50 || tamanhoLista > 100)
+	while(tamanhoLista< 50 || tamanhoLista > 100)
 	{
 		tamanhoLista = EntradaInteiro("Digite o Valor do Tanho Da lista");
 		if(tamanhoLista < 50 || tamanhoLista > 100)
 			EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
 	}
-	quantidadeGen = EntradaInteiro("Digite o Valor da quantidade de gera��es que ser�o simuladas");
+	quantidadeGen = EntradaInteiro("Digite o Valor da quantidade de geracoes que serao simuladas");
+	LimparMundo();
 }
 
 void LimparMundo(){
 	for(int i=0;i<tamanhoLista;i++){
 		for(int j = 0;j<tamanhoLista;j++){
 			Matriz[i][j].vivo = FALSE;
+			Matriz[i][j].posicao.x = j;
+			Matriz[i][j].posicao.y = i;
 		}
 	}
 }
 
 void TrocarMatrizes(){
 	for(int i = 0;i<tamanhoLista; i++){
-		for(int j=0;i<tamanhoLista;j++){
+		for(int j=0;j<tamanhoLista;j++){
 			Matriz[i][j] = MatrizPG[i][j];
 		}
 	}
@@ -70,14 +73,15 @@ void ConfigurarPrimeiraGeracao(){
 }
 
 void IniciarSimulacao(){
-	EscreverMensagem("Simula��o iniciada:");
-	EscreverMensagem("-----------------------------------------------");
-	EscreverMensagem("1� Gera��o:");
-	ExibirGeracao(MatrizPG,tamanhoLista);
+	EscreverMensagem("Simulacao iniciada:");
+	EscreverMensagem("############################################################");
+	EscreverMensagem("1 - Geracao:");
+	ExibirGeracao(Matriz,tamanhoLista);
 	for(int i = 2; i <= quantidadeGen;i++){
 		EscreverMensagem("-----------------------------------------------");
-		EscreverMensagemComInteiro("%d� Gera��o:",i);
+		EscreverMensagemComInteiro("%d - Geracao:",i);
 		ProximaGeracao();
 	}
-	EscreverMensagem("Fim da Simula��o");
+	EscreverMensagem("###########################################################");
+	EscreverMensagem("Fim da Simulacao");
 }
