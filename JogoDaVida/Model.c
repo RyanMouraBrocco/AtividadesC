@@ -78,6 +78,7 @@ boolean ValidarVida(tipo_Individuo individuo){
 				break;
 		}
 	}else{
+		
 		if(individuo.qtdVizinhos == 3)
 			return TRUE;
 		else
