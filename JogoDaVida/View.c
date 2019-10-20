@@ -16,7 +16,7 @@ int EntradaInteiro(char valor[]){
 	return inteiro;
 }
 
-void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
+void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho,char vivo,char morto){
 	printf("    ");
 	for (int a = 0; a<tamanho; a++){
 		if(a<9)
@@ -34,10 +34,17 @@ void ExibirGeracao(tipo_Individuo matriz[100][100], int tamanho){
 		else
 			printf("%d ", i + 1);			
 		for(int j = 0; j<tamanho; j++){
-			printf("  %d", matriz[i][j].vivo);
+			printf("  %c", ImagemPersonagem(vivo,morto,matriz[i][j].vivo));
 		}
 		printf("\n");
 	}
+}
+
+char ImagemPersonagem(char vivo,char morto, boolean condicao){
+	if(condicao == TRUE)
+		return vivo;
+	else
+		return morto;
 }
 
 void EntradaCoordenadas(int valores[], int tamanho){

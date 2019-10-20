@@ -6,6 +6,7 @@
 
 void main() {
 	IniciandoConfig();
+    EscolherImagemIndividuo();
 	ConfigurarPrimeiraGeracao();
 	IniciarSimulacao();
 }

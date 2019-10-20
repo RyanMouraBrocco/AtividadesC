@@ -6,6 +6,8 @@ tipo_Individuo MatrizPG[100][100];
 
 int tamanhoLista = 0;
 int quantidadeGen = 0;
+char imagemPersonagemVivo = '1';
+char imagemPersonagemMorto = '0';
 
 void IniciandoConfig(){
 	while(tamanhoLista< 50 || tamanhoLista > 100)
@@ -44,13 +46,13 @@ void ProximaGeracao(){
 			MatrizPG[i][j].vivo = ValidarVida(Matriz[i][j]);
 		}
 	}
-	ExibirGeracao(MatrizPG,tamanhoLista);
+	ExibirGeracao(MatrizPG,tamanhoLista,imagemPersonagemVivo,imagemPersonagemMorto);
 	TrocarMatrizes();
 }
 
 
 void Mostrar(){
-		ExibirGeracao(Matriz,tamanhoLista);
+	ExibirGeracao(Matriz,tamanhoLista,imagemPersonagemVivo,imagemPersonagemMorto);
 }
 
 
@@ -66,7 +68,7 @@ void ConfigurarPrimeiraGeracao(){
 			continuar = EntradaBooleano("Deseja continuar ? (s ou n)",'s','n');
 			qtd+=1;
 		}else{
-			EscreverMensagem("Valor j� inserido !!!");
+			EscreverMensagem("Valor ja inserido !!!");
 		}
 
 	}
@@ -76,7 +78,7 @@ void IniciarSimulacao(){
 	EscreverMensagem("Simulacao iniciada:");
 	EscreverMensagem("############################################################");
 	EscreverMensagem("1 - Geracao:");
-	ExibirGeracao(Matriz,tamanhoLista);
+	ExibirGeracao(Matriz,tamanhoLista,imagemPersonagemVivo,imagemPersonagemMorto);
 	for(int i = 2; i <= quantidadeGen;i++){
 		EscreverMensagem("-----------------------------------------------");
 		EscreverMensagemComInteiro("%d - Geracao:",i);
@@ -84,4 +86,35 @@ void IniciarSimulacao(){
 	}
 	EscreverMensagem("###########################################################");
 	EscreverMensagem("Fim da Simulacao");
+}
+
+void EscolherImagemIndividuo(){
+	EscreverMensagem("Escolha de Imagem:");
+	EscreverMensagem("Opcao 1:");
+	EscreverMensagem("\tVivo: # Morto: (vazio)"); 
+	EscreverMensagem("Opcao 2:");
+	EscreverMensagem("\tVivo: O Morto: X");
+	EscreverMensagem("Opcao 3:");
+	EscreverMensagem("\tVivo: + Morto: -");
+	int resposta = 0;
+	while(resposta != 1 && resposta != 2 && resposta != 3){
+		resposta = EntradaInteiro("Digite o numero da opcao");
+		if(resposta != 1 && resposta != 2 && resposta != 3)
+			EscreverMensagem("Digite uma opcao valida");
+	}
+	switch(resposta){
+		case 1:
+			imagemPersonagemVivo = '#';
+			imagemPersonagemMorto = ' ';
+			break;
+		case 2:
+			imagemPersonagemVivo = 'O';
+			imagemPersonagemMorto = 'X';
+			break;
+		case 3:
+			imagemPersonagemVivo = '+';
+			imagemPersonagemMorto = '-';
+			break;
+			
+	}
 }
