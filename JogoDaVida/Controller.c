@@ -13,10 +13,10 @@ int tempoEspera = 0;
 
 void IniciandoConfig(){
 	ReiniciarValores();
-	while(tamanhoLista< 5 || tamanhoLista > 100)
+	while(tamanhoLista< 50 || tamanhoLista > 100)
 	{
 		tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
-		if(tamanhoLista < 5 || tamanhoLista > 100)
+		if(tamanhoLista < 50 || tamanhoLista > 100)
 			EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
 	}
 	boolean definirGeracao = EntradaBooleano("Deseja definir a quantidade de geracoes ? (s ou n)",'s','n');
