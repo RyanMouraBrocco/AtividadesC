@@ -10,15 +10,26 @@ int quantidadeGen = 0;
 char imagemPersonagemVivo = '1';
 char imagemPersonagemMorto = '0';
 int tempoEspera = 0;
+boolean geracaoCarregada = FALSE;
 
 void IniciandoConfig(){
 	ReiniciarValores();
-	while(tamanhoLista< 50 || tamanhoLista > 100)
+	Sleep(1000);
+	while(tamanhoLista < 50 || tamanhoLista > 100)
 	{
-		tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
-		if(tamanhoLista < 50 || tamanhoLista > 100)
-			EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
+		boolean carregarMundo = EntradaBooleano("Deseja carregar um mundo salvo ou comecar um novo ? (s para salvo e n para novo)",'s','n');
+		if(carregarMundo == FALSE){
+			tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
+			if(tamanhoLista < 50 || tamanhoLista > 100)
+				EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
+			else
+				LimparMundo();
+		}else{
+			CarregarGeracao();
+		}
+
 	}
+	
 	boolean definirGeracao = EntradaBooleano("Deseja definir a quantidade de geracoes ? (s ou n)",'s','n');
 	if(definirGeracao == TRUE){
 		
@@ -35,7 +46,6 @@ void IniciandoConfig(){
 	}
 	EscolherImagemIndividuo();
 	
-	LimparMundo();
 }
 
 void ReiniciarValores(){
@@ -44,6 +54,7 @@ void ReiniciarValores(){
 	imagemPersonagemVivo = '1';
 	imagemPersonagemMorto = '0';
 	tempoEspera = 0;
+	geracaoCarregada = FALSE;
 }
 
 void LimparMundo(){
@@ -83,7 +94,13 @@ void Mostrar(){
 
 
 void ConfigurarPrimeiraGeracao(){
-	LimparMundo();
+	
+	if(geracaoCarregada == TRUE){
+		boolean continuar = EntradaBooleano("Voce ja carregou valores de um arquivo, deseja adicionar novos individuos ? (s ou n)",'s','n');
+		if(continuar == FALSE)
+			return;
+	}
+	
 	EscreverMensagem("Iniciando Configuracoes de 1 geracao");
 	int coordenadas[2];
 	boolean continuar = TRUE;
@@ -168,7 +185,7 @@ void IniciarJogoPelaEscolha(){
 }
 
 void SalvarUltimaGeracao(){
-	boolean continuar = TRUE;
+	boolean continuar = EntradaBooleano("Deseja salvar essa geracao ?(s ou n)",'s','n');
 	while(continuar == TRUE){
 		if(SalvarMundo(Matriz,tamanhoLista) == TRUE){
 			EscreverMensagem("Mundo salvo com sucesso");
@@ -178,5 +195,13 @@ void SalvarUltimaGeracao(){
 			continuar = EntradaBooleano("Houve falha ao salvar o mundo, deseja tentar novamente ? (s ou n)",'s','n');
 		}
 	}	
+}
+
+void CarregarGeracao(){
+	tamanhoLista = CarregarMundo(Matriz);
+	if(tamanhoLista == 0)
+		EscreverMensagem("Erro ao Carregar o Mundo");
+	else
+		geracaoCarregada = TRUE;
 }
 

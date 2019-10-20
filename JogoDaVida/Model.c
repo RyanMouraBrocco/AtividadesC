@@ -2,6 +2,7 @@
 #include <STDIO.H>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 tipo_Individuo EncontrarVizinhos(tipo_Individuo matriz[100][100], int tamMatriz, tipo_Individuo individuo){
 	
@@ -95,24 +96,7 @@ boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho){
 	arq = fopen("Save.txt", "wt");
 
 	if (arq == NULL)
-	    return FALSE;
-	    
-	
-	result = fputs("Tamanho\n", arq);
-		if (result == EOF)
-			return FALSE;
-			
-	char str_tam[5];
-	sprintf(str_tam, "%d\n", tamanho);		
-	result = fputs(str_tam, arq);
-		if (result == EOF)
-			return FALSE;
-	
-	    
-	result = fputs("Linha,Coluna,Valor\n", arq);
-		if (result == EOF)
-			return FALSE;
-			
+	    return FALSE;	
 			
 	for(int i = 0; i < tamanho;i++){
 		for(int j = 0;j<tamanho;j++){
@@ -130,4 +114,35 @@ boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho){
 	
 	return TRUE;
 		
+}
+
+int CarregarMundo(tipo_Individuo matriz[100][100]){
+	FILE *arq;
+	int result;
+
+	arq = fopen("Save.txt", "rt");
+	
+	if (arq == NULL)
+		return 0;
+		
+	int tamanho = 0;
+	while (!feof(arq))
+  	{
+		int x,y,vivo,result;
+		result = fscanf(arq, "%d,%d,%d\n", &y, &x,&vivo);
+		
+		matriz[y][x].vivo = vivo;
+		matriz[y][x].posicao.x = x;
+		matriz[y][x].posicao.y = y;
+		   
+		if (result == EOF)
+			return 0;
+		else
+			tamanho += 1;
+  	}
+
+	fclose(arq);
+  	
+  	return sqrt(tamanho);
+  	
 }

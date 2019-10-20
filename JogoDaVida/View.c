@@ -4,6 +4,8 @@
 #include "Model.h"
 #include "View.h"
 
+boolean controleChar = FALSE;
+
 void flush_in(){
 	int ch;
 	while( (ch = fgetc(stdin)) != EOF && ch != '\n'){}
@@ -69,11 +71,16 @@ boolean EntradaBooleano(char valor[], char valorPositivo, char valorNegativo){
 	char resposta;
 	while (resposta != valorPositivo && resposta != valorNegativo){
 		printf("%s \n", valor);
-		flush_in();
+		
+		if(controleChar == TRUE)
+			flush_in();
 		resposta = getchar();
+		
 		if (resposta == valorPositivo){
+			controleChar = TRUE;
 			return TRUE;
 		}else if (resposta == valorNegativo){
+			controleChar = TRUE;
 			return FALSE;
 		}
 	}

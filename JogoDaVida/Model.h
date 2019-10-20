@@ -26,6 +26,7 @@ int ValidarVizinhosVivos(tipo_Individuo individuo, tipo_Individuo matriz[100][10
 void LocalizarPosicoes(int max, int posicaoInicial, int posicoes[]);
 boolean ValidarVida(tipo_Individuo individuo);
 boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho);
+int CarregarMundo(tipo_Individuo matriz[100][100]);
 
 
 #endif 
