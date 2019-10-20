@@ -10,5 +10,6 @@ void Mostrar();
 void IniciandoConfig();
 void IniciarSimulacao();
 void ReiniciarValores();
+void IniciarJogoPelaEscolha();
 
 #endif 
