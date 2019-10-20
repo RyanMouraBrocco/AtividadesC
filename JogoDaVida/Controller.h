@@ -9,7 +9,9 @@ void LimparMundo();
 void Mostrar();
 void IniciandoConfig();
 void IniciarSimulacao();
-void ReiniciarValores();
 void IniciarJogoPelaEscolha();
+void ReiniciarValores();
+void SalvarUltimaGeracao();
+void EscolherImagemIndividuo();
 
 #endif 

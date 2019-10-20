@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "View.h"
+#include "Controller.h"
 
 tipo_Individuo Matriz[100][100];
 tipo_Individuo MatrizPG[100][100];
@@ -164,5 +165,18 @@ void IniciarJogoPelaEscolha(){
 		EscreverMensagem("#####################################");
 		EscreverMensagem("Fim da Simulacao");
 	}
+}
+
+void SalvarUltimaGeracao(){
+	boolean continuar = TRUE;
+	while(continuar == TRUE){
+		if(SalvarMundo(Matriz,tamanhoLista) == TRUE){
+			EscreverMensagem("Mundo salvo com sucesso");
+			continuar = FALSE;
+		}	
+		else{
+			continuar = EntradaBooleano("Houve falha ao salvar o mundo, deseja tentar novamente ? (s ou n)",'s','n');
+		}
+	}	
 }
 
