@@ -1,5 +1,7 @@
 #include "Model.h"
-
+#include <STDIO.H>
+#include <string.h>
+#include <stdlib.h>
 
 tipo_Individuo EncontrarVizinhos(tipo_Individuo matriz[100][100], int tamMatriz, tipo_Individuo individuo){
 	
@@ -84,4 +86,48 @@ boolean ValidarVida(tipo_Individuo individuo){
 		else
 			return FALSE;
 	}
+}
+
+boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho){
+	FILE *arq;
+	int result;
+
+	arq = fopen("Save.txt", "wt");
+
+	if (arq == NULL)
+	    return FALSE;
+	    
+	
+	result = fputs("Tamanho\n", arq);
+		if (result == EOF)
+			return FALSE;
+			
+	char str_tam[5];
+	sprintf(str_tam, "%d\n", tamanho);		
+	result = fputs(str_tam, arq);
+		if (result == EOF)
+			return FALSE;
+	
+	    
+	result = fputs("Linha,Coluna,Valor\n", arq);
+		if (result == EOF)
+			return FALSE;
+			
+			
+	for(int i = 0; i < tamanho;i++){
+		for(int j = 0;j<tamanho;j++){
+			char str[10];
+			sprintf(str, "%d,%d,%d\n", i,j,matriz[i][j].vivo);
+			result = fputs(str, arq);
+	
+			if (result == EOF)
+			    return FALSE;
+			    
+		}
+	}	
+	
+	fclose(arq);
+	
+	return TRUE;
+		
 }

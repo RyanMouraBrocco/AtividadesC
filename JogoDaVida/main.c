@@ -11,5 +11,6 @@ void main() {
 		IniciandoConfig();
 		ConfigurarPrimeiraGeracao();
 		IniciarJogoPelaEscolha();
+		SalvarUltimaGeracao();
 	}
 }

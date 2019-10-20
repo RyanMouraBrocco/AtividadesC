@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "View.h"
+#include "Controller.h"
 
 tipo_Individuo Matriz[100][100];
 tipo_Individuo MatrizPG[100][100];
@@ -12,10 +13,10 @@ int tempoEspera = 0;
 
 void IniciandoConfig(){
 	ReiniciarValores();
-	while(tamanhoLista< 5 || tamanhoLista > 100)
+	while(tamanhoLista< 50 || tamanhoLista > 100)
 	{
 		tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
-		if(tamanhoLista < 5 || tamanhoLista > 100)
+		if(tamanhoLista < 50 || tamanhoLista > 100)
 			EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
 	}
 	boolean definirGeracao = EntradaBooleano("Deseja definir a quantidade de geracoes ? (s ou n)",'s','n');
@@ -164,5 +165,18 @@ void IniciarJogoPelaEscolha(){
 		EscreverMensagem("#####################################");
 		EscreverMensagem("Fim da Simulacao");
 	}
+}
+
+void SalvarUltimaGeracao(){
+	boolean continuar = TRUE;
+	while(continuar == TRUE){
+		if(SalvarMundo(Matriz,tamanhoLista) == TRUE){
+			EscreverMensagem("Mundo salvo com sucesso");
+			continuar = FALSE;
+		}	
+		else{
+			continuar = EntradaBooleano("Houve falha ao salvar o mundo, deseja tentar novamente ? (s ou n)",'s','n');
+		}
+	}	
 }
 

@@ -87,3 +87,9 @@ void EscreverMensagemComInteiro(char valorTexto[], int valorInteiro){
 	printf(valorTexto, valorInteiro);
 	printf("\n");
 }
+
+void EntradaNomeArquivo(char valor[], char resposta[],int tamanho){
+	printf(valor);
+	flush_in();
+	fgets(resposta,tamanho,stdin);
+}
