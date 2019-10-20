@@ -8,16 +8,41 @@ int tamanhoLista = 0;
 int quantidadeGen = 0;
 char imagemPersonagemVivo = '1';
 char imagemPersonagemMorto = '0';
+int tempoEspera = 0;
 
 void IniciandoConfig(){
-	while(tamanhoLista< 50 || tamanhoLista > 100)
+	ReiniciarValores();
+	while(tamanhoLista< 5 || tamanhoLista > 100)
 	{
-		tamanhoLista = EntradaInteiro("Digite o Valor do Tanho Da lista");
-		if(tamanhoLista < 50 || tamanhoLista > 100)
+		tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
+		if(tamanhoLista < 5 || tamanhoLista > 100)
 			EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
 	}
-	quantidadeGen = EntradaInteiro("Digite o Valor da quantidade de geracoes que serao simuladas");
+	boolean definirGeracao = EntradaBooleano("Deseja definir a quantidade de geracoes ? (s ou n)",'s','n');
+	if(definirGeracao == TRUE){
+		
+		while(quantidadeGen <= 0)
+			quantidadeGen = EntradaInteiro("Digite o Valor da quantidade de geracoes que serao simuladas");
+			
+		boolean definirTempo = EntradaBooleano("Deseja definir um tempo entre as geracoes ? (s ou n)",'s','n');
+		if(definirTempo == TRUE){
+			while(tempoEspera <= 0)
+				tempoEspera = EntradaInteiro("Digite o tempo em segundos de uma geracao a outra");	
+				
+			tempoEspera = tempoEspera * 1000;
+		}
+	}
+	EscolherImagemIndividuo();
+	
 	LimparMundo();
+}
+
+void ReiniciarValores(){
+	tamanhoLista = 0;
+	quantidadeGen = 0;
+	imagemPersonagemVivo = '1';
+	imagemPersonagemMorto = '0';
+	tempoEspera = 0;
 }
 
 void LimparMundo(){
@@ -58,6 +83,7 @@ void Mostrar(){
 
 void ConfigurarPrimeiraGeracao(){
 	LimparMundo();
+	EscreverMensagem("Iniciando Configuracoes de 1 geracao");
 	int coordenadas[2];
 	boolean continuar = TRUE;
 	int qtd = 0;
@@ -78,8 +104,12 @@ void IniciarSimulacao(){
 	EscreverMensagem("Simulacao iniciada:");
 	EscreverMensagem("############################################################");
 	EscreverMensagem("1 - Geracao:");
-	ExibirGeracao(Matriz,tamanhoLista,imagemPersonagemVivo,imagemPersonagemMorto);
+	Mostrar();
 	for(int i = 2; i <= quantidadeGen;i++){
+		
+		if(tempoEspera != 0)
+			Sleep(tempoEspera);
+			
 		EscreverMensagem("-----------------------------------------------");
 		EscreverMensagemComInteiro("%d - Geracao:",i);
 		ProximaGeracao();
@@ -118,3 +148,21 @@ void EscolherImagemIndividuo(){
 			
 	}
 }
+
+void IniciarJogoPelaEscolha(){
+	if(quantidadeGen!=0){
+		IniciarSimulacao();
+	}
+	else{
+		boolean continuar = TRUE;
+		Mostrar();
+		while(continuar == TRUE){
+			continuar = EntradaBooleano("Deseja Executar Proxima Geracao? (s ou n)",'s','n');
+			if(continuar)
+				ProximaGeracao();
+		}
+		EscreverMensagem("#####################################");
+		EscreverMensagem("Fim da Simulacao");
+	}
+}
+
