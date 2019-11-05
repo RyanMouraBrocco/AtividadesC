@@ -14,7 +14,7 @@ boolean geracaoCarregada = FALSE;
 
 void IniciandoConfig(){
 	ReiniciarValores();
-	Sleep(1000);
+	Sleep(500);
 	while(tamanhoLista < 50 || tamanhoLista > 100)
 	{
 		boolean carregarMundo = EntradaBooleano("Deseja carregar um mundo salvo ou comecar um novo ? (s para salvo e n para novo)",'s','n');
@@ -205,3 +205,15 @@ void CarregarGeracao(){
 		geracaoCarregada = TRUE;
 }
 
+
+void ExecutarJogo(){
+	boolean parar = TRUE;
+	while(parar == TRUE){
+		IniciandoConfig();
+		ConfigurarPrimeiraGeracao();
+		IniciarJogoPelaEscolha();
+		SalvarUltimaGeracao();
+		Sleep(500);
+		parar = EntradaBooleano("Deseja Reiniciar o Jogo ? (s ou n)", 's', 'n');
+	}
+}

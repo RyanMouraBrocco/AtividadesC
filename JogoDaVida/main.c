@@ -6,11 +6,5 @@
 typedef int boolean;
 
 void main() {
-	boolean parar = FALSE;
-	while(parar == FALSE){
-		IniciandoConfig();
-		ConfigurarPrimeiraGeracao();
-		IniciarJogoPelaEscolha();
-		SalvarUltimaGeracao();
-	}
+	ExecutarJogo();
 }
