@@ -13,5 +13,6 @@ void IniciarJogoPelaEscolha();
 void ReiniciarValores();
 void SalvarUltimaGeracao();
 void EscolherImagemIndividuo();
+void ExecutarJogo();
 
 #endif 
