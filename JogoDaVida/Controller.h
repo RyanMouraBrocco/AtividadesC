@@ -14,5 +14,6 @@ void ReiniciarValores();
 void SalvarUltimaGeracao();
 void EscolherImagemIndividuo();
 void ExecutarJogo();
+void CarregarTemplate();
 
 #endif 

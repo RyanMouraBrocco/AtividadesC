@@ -100,3 +100,10 @@ void EntradaNomeArquivo(char valor[], char resposta[],int tamanho){
 	flush_in();
 	fgets(resposta,tamanho,stdin);
 }
+
+void ExibirOpcoesTemplate(){
+	printf("Escolha um dos templates para simular: \n");
+	printf("1 - Glider\n");
+	printf("2 - Sapo\n");
+	printf("3 - Acorn\n");
+}

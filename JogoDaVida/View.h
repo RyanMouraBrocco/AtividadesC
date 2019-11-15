@@ -11,6 +11,7 @@ void EntradaCoordenadas(int valores[], int tamanho);
 boolean EntradaBooleano(char valor[],char valorPositivo, char valorNegativo);
 void EscreverMensagem(char valor[]);
 char ImagemPersonagem(char vivo,char morto, boolean codicao);
+void ExibirOpcoesTemplate();
 
 
 #endif 
