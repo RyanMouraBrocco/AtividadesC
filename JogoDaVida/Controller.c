@@ -15,20 +15,30 @@ boolean geracaoCarregada = FALSE;
 void IniciandoConfig(){
 	ReiniciarValores();
 	Sleep(500);
-	while(tamanhoLista < 50 || tamanhoLista > 100)
-	{
-		boolean carregarMundo = EntradaBooleano("Deseja carregar um mundo salvo ou comecar um novo ? (s para salvo e n para novo)",'s','n');
-		if(carregarMundo == FALSE){
-			tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
-			if(tamanhoLista < 50 || tamanhoLista > 100)
-				EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
-			else
-				LimparMundo();
-		}else{
-			CarregarGeracao();
+	while(tamanhoLista < 50 || tamanhoLista > 100){
+		
+		boolean templateSalvo = EntradaBooleano("Deseja usar um template pronto ? (s para sim e n para nao)",'s','n');
+		if(templateSalvo==TRUE){
+			CarregarTemplate();
 		}
-
+		else
+		{
+			Sleep(100);
+			boolean carregarMundo = EntradaBooleano("Deseja carregar um mundo salvo ou comecar um novo ? (s para salvo e n para novo)",'s','n');
+			if(carregarMundo == FALSE){
+				tamanhoLista = EntradaInteiro("Digite o Valor do Tamanho Da lista");
+				if(tamanhoLista < 50 || tamanhoLista > 100)
+					EscreverMensagem("O tamanho do mundo deve ser entre 50 a 100 idividuos");
+				else
+					LimparMundo();
+			}else{
+				CarregarGeracao("Save.txt");
+			}
+		}
+		
 	}
+
+
 	
 	boolean definirGeracao = EntradaBooleano("Deseja definir a quantidade de geracoes ? (s ou n)",'s','n');
 	if(definirGeracao == TRUE){
@@ -46,6 +56,25 @@ void IniciandoConfig(){
 	}
 	EscolherImagemIndividuo();
 	
+}
+
+void CarregarTemplate(){
+	ExibirOpcoesTemplate();
+	int valorEscolhido = 0;
+	while(valorEscolhido < 1 || valorEscolhido > 3){
+		valorEscolhido = EntradaInteiro("Digite sua escolha: ");
+		switch(valorEscolhido){
+			case 1:
+				CarregarGeracao("Glider.txt");
+				break;
+			case 2:
+				CarregarGeracao("Sapo.txt");
+				break;
+			case 3:
+				CarregarGeracao("Acorn.txt");
+				break;
+		}
+	}
 }
 
 void ReiniciarValores(){
@@ -76,13 +105,7 @@ void TrocarMatrizes(){
 }
 
 void ProximaGeracao(){
-	for(int i = 0;i<tamanhoLista;i++){
-		for(int j = 0;j<tamanhoLista;j++){
-			Matriz[i][j] = EncontrarVizinhos(Matriz,tamanhoLista,Matriz[i][j]);
-			MatrizPG[i][j] = Matriz[i][j];
-			MatrizPG[i][j].vivo = ValidarVida(Matriz[i][j]);
-		}
-	}
+	CalculoProximaGeracao(Matriz,MatrizPG,tamanhoLista);
 	ExibirGeracao(MatrizPG,tamanhoLista,imagemPersonagemVivo,imagemPersonagemMorto);
 	TrocarMatrizes();
 }
@@ -187,7 +210,7 @@ void IniciarJogoPelaEscolha(){
 void SalvarUltimaGeracao(){
 	boolean continuar = EntradaBooleano("Deseja salvar essa geracao ?(s ou n)",'s','n');
 	while(continuar == TRUE){
-		if(SalvarMundo(Matriz,tamanhoLista) == TRUE){
+		if(SalvarMundo(Matriz,tamanhoLista,"Save.txt") == TRUE){
 			EscreverMensagem("Mundo salvo com sucesso");
 			continuar = FALSE;
 		}	
@@ -197,8 +220,8 @@ void SalvarUltimaGeracao(){
 	}	
 }
 
-void CarregarGeracao(){
-	tamanhoLista = CarregarMundo(Matriz);
+void CarregarGeracao(char nome[]){
+	tamanhoLista = CarregarMundo(Matriz,nome);
 	if(tamanhoLista == 0)
 		EscreverMensagem("Erro ao Carregar o Mundo");
 	else

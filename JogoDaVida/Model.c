@@ -89,11 +89,21 @@ boolean ValidarVida(tipo_Individuo individuo){
 	}
 }
 
-boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho){
+void CalculoProximaGeracao(tipo_Individuo Matriz[100][100],tipo_Individuo MatrizPG[100][100],int tamanhoLista){
+	for(int i = 0;i<tamanhoLista;i++){
+		for(int j = 0;j<tamanhoLista;j++){
+			Matriz[i][j] = EncontrarVizinhos(Matriz,tamanhoLista,Matriz[i][j]);
+			MatrizPG[i][j] = Matriz[i][j];
+			MatrizPG[i][j].vivo = ValidarVida(Matriz[i][j]);
+		}
+	}
+}
+
+boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho, char nome[]){
 	FILE *arq;
 	int result;
 
-	arq = fopen("Save.txt", "wt");
+	arq = fopen(nome, "wt");
 
 	if (arq == NULL)
 	    return FALSE;	
@@ -116,11 +126,11 @@ boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho){
 		
 }
 
-int CarregarMundo(tipo_Individuo matriz[100][100]){
+int CarregarMundo(tipo_Individuo matriz[100][100], char nome[]){
 	FILE *arq;
 	int result;
 
-	arq = fopen("Save.txt", "rt");
+	arq = fopen(nome, "rt");
 	
 	if (arq == NULL)
 		return 0;

@@ -25,8 +25,9 @@ tipo_Individuo EncontrarVizinhos(tipo_Individuo matriz[100][100], int tamMatriz,
 int ValidarVizinhosVivos(tipo_Individuo individuo, tipo_Individuo matriz[100][100]);
 void LocalizarPosicoes(int max, int posicaoInicial, int posicoes[]);
 boolean ValidarVida(tipo_Individuo individuo);
-boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho);
-int CarregarMundo(tipo_Individuo matriz[100][100]);
+boolean SalvarMundo(tipo_Individuo matriz[100][100],int tamanho, char nome[]);
+int CarregarMundo(tipo_Individuo matriz[100][100], char nome[]);
+void CalculoProximaGeracao(tipo_Individuo Matriz[100][100],tipo_Individuo MatrizPG[100][100],int tamanhoLista);
 
 
 #endif 
